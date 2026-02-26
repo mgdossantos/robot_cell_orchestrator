@@ -86,8 +86,7 @@ class Orchestrator ():
         self.ctx.cycles_ok+=1
 
         return {"ok": True, "state": self.ctx.state, "placed_pose": place_pose}
-
-    def run_cycle(self, max_vision_retries: int = 2):
+    def run_cycle(self):
         if self.ctx.state == CellState.IDLE:
             r_home=self.home()
             if not r_home.get("ok", False):
@@ -100,7 +99,6 @@ class Orchestrator ():
 
         r_place = self.place()
         return r_place
-
     def reset(self) -> dict:
         self.ctx.state = CellState.IDLE
         self.ctx.last_error = None
