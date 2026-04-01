@@ -212,78 +212,11 @@ This project includes automated tests using **pytest-bdd** to validate system be
 Each aspect of the system is validated through explicit BDD scenarios:
 
 #### Vision failures and retry logic
-
-~~~gherkin
-Scenario: Vision fails and pick goes to ERROR
-  Given the cell is in READY state
-  And the vision always fails
-  When I execute a pick command
-  Then the cell state should be ERROR
-  And the error reason should be "vision_no_detection"
-~~~
-
 #### Robot motion failures
-
-~~~gherkin
-Scenario: Robot fails to move during pick
-  Given the cell is in READY state
-  And the vision always succeeds
-  And the robot always fails
-  And the gripper never slips
-  When I execute a pick command
-  Then the cell state should be ERROR
-  And the error reason should be "robot_move_failed"
-~~~
-
 #### Gripper failures (slipping)
-
-~~~gherkin
-Scenario: Gripper slips after successful move
-  Given the cell is in READY state
-  And the vision always succeeds
-  And the robot never fails
-  And the gripper always slips
-  When I execute a pick command
-  Then the cell state should be ERROR
-  And the error reason should be "grip_failed"
-~~~
-
 #### Invalid state transitions
-
-~~~gherkin
-Scenario: Pick called when cell is not READY
-  Given the cell is in PICKING state
-  When I execute a pick command
-  Then the cell state should be ERROR
-  And the error reason should be "not_ready"
-~~~
-
 #### Successful pick execution
-
-~~~gherkin
-Scenario: Pick succeeds when all components work
-  Given the cell is in READY state
-  And the vision always succeeds
-  And the robot never fails
-  And the gripper never slips
-  When I execute a pick command
-  Then the cell state should be READY
-  And the robot should hold a part
-~~~
-
 #### Full cycle execution
-
-~~~gherkin
-Scenario: Full cycle succeeds
-  Given the cell is in READY state
-  And the vision always succeeds
-  And the robot never fails
-  And the gripper never slips
-  When I execute a full cycle
-  Then the cell state should be READY
-  And the cycle counter should be incremented
-~~~
-
 ---
 
 ### Running Tests
@@ -305,9 +238,7 @@ Run with coverage:
 ~~~bash
 python -m pytest --cov=app --cov-report=html
 ~~~
-
 ---
-
 ### Why BDD?
 
 BDD ensures:
