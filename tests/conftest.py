@@ -17,6 +17,9 @@ def vision_always_fails() -> VisionService:
     # p_fail=1.0 => sempre retorna None
     return VisionService(p_fail=1.0)
 
+@pytest.fixture
+def vision_always_succeeds() -> VisionService:
+    return VisionService(p_fail=0.0)
 
 @pytest.fixture
 def robot_never_fails() -> RobotDriver:

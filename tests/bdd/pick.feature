@@ -9,3 +9,12 @@ Feature: Pick operation
     Then the cell state should be ERROR
     And the error reason should be "vision_no_detection"
     And the vision failure counter should be incremented
+
+  Scenario: Full pick and place cycle succeeds
+    Given the cell is in READY state
+    And the vision always succeeds
+    And the robot never fails
+    And the gripper never slips
+     When I execute a full cycle
+    Then the cell state should be READY
+    And the cycle counter should be incremented

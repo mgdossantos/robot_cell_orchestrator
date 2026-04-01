@@ -17,6 +17,9 @@ def vision_always_fails(vision_always_fails):
     # Fixture already enforces p_fail=1.0
     return vision_always_fails
 
+@given("the vision always succeeds")
+def vision_always_succeeds_step(vision_always_succeeds, orch):
+    orch.vision = vision_always_succeeds
 
 @given("the robot never fails")
 def robot_never_fails(robot_never_fails):
@@ -36,6 +39,10 @@ def execute_pick(orch, ctx):
     ctx._vision_failures_before = ctx.vision_failures  # small helper for the scenario
     orch.pick()
 
+@when("I execute a full cycle")
+def execute_cycle(orch, ctx):
+    ctx._cycles_ok_before = ctx.cycles_ok
+    orch.run_cycle()
 
 @then("the cell state should be ERROR")
 def state_should_be_error(ctx):
@@ -50,3 +57,13 @@ def reason_should_be_vision_no_detection(ctx):
 @then("the vision failure counter should be incremented")
 def vision_counter_incremented(ctx):
     assert ctx.vision_failures > ctx._vision_failures_before
+
+@then("the cell state should be READY")
+def state_should_be_ready(ctx):
+    from app.domain import CellState
+    assert ctx.state == CellState.READY
+
+@then("the cycle counter should be incremented")
+def cycle_counter_incremented(ctx):
+    assert ctx.cycles_ok > ctx._cycles_ok_before
+
