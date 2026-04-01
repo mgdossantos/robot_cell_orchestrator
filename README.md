@@ -232,24 +232,12 @@ python -m pytest --cov=app --cov-report=html
 ~~~
 ---
 ### Why BDD?
-
 BDD ensures:
-
 - Clear mapping between requirements and behavior  
 - Deterministic testing (no randomness in tests)  
 - Better readability and maintainability  
 - Easier debugging of failure cases  
-  
-## Next Steps
-
-Possible extensions to this project include:
-- Structured logging and metrics
-- Recovery strategies from the ERROR state
-- Integration with real robotic hardware or ROS
-
----
-
+ ---
 ## Notes
-
 This project is intentionally simplified to focus on backend architecture,
 state machines, and fault handling rather than real-time control.
