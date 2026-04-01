@@ -203,7 +203,6 @@ A typical workflow using the API:
 Alternatively, a full cycle can be executed with:
 - POST /run_cycle
 
-The system returns structured responses describing the outcome of each operation.
 ---
 ## Behavior-Driven Testing (BDD)
 This project includes automated tests using **pytest-bdd** to validate system behavior under different scenarios.
