@@ -210,31 +210,23 @@ This project includes automated tests using **pytest-bdd** to validate system be
 ### What is Covered
 
 Each aspect of the system is validated through explicit BDD scenarios:
-
-#### Vision failures and retry logic
-#### Robot motion failures
-#### Gripper failures (slipping)
-#### Invalid state transitions
-#### Successful pick execution
-#### Full cycle execution
+- Vision failures and retry logic
+- Robot motion failures
+- Gripper failures (slipping)
+- Invalid state transitions
+- Successful pick execution
+- Full cycle execution
 ---
-
 ### Running Tests
-
 Install dependencies:
-
 ~~~bash
 pip install pytest pytest-bdd pytest-cov
 ~~~
-
 Run tests:
-
 ~~~bash
 python -m pytest -q
 ~~~
-
 Run with coverage:
-
 ~~~bash
 python -m pytest --cov=app --cov-report=html
 ~~~
